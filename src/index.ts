@@ -11,19 +11,19 @@ export const jsonSafeParse = (json: string): any => {
   return {};
 };
 
-export function isNullish(obj: any): boolean {
+export const isNullish = (obj: any): boolean => {
   return typeof obj === "undefined" || obj === null;
-}
+};
 
-export function isAsyncCallback(func: Function): boolean {
+export const isAsyncCallback = (func: Function): boolean => {
   return func.toString().indexOf("=> __awaiter(") > 0;
-}
+};
 
-export function isArray(obj: any): boolean {
+export const isArray = (obj: any): boolean => {
   return toType(obj) == "array";
-}
+};
 
-export function toType(obj: any): string {
+export const toType = (obj: any): string => {
   if (typeof obj === "undefined") {
     return "undefined";
   } else if (obj === null) {
@@ -50,15 +50,15 @@ export function toType(obj: any): string {
     .call(obj)
     .match(/\s([a-zA-Z]+)/);
   return match !== null ? String(match[1]).toLocaleLowerCase() : "";
-}
+};
 
 export const unique = <T>(arr: any): T[] => {
   return [...new Set(arr)] as T[];
 };
 
-export function uniqueId(): string {
+export const uniqueId = (): string => {
   return "_" + Math.random().toString(36).substr(2, 9);
-}
+};
 
 export const wait = (callback: Function, delay: number = 1) => {
   setTimeout(callback, delay);
